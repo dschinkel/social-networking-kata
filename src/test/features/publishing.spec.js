@@ -17,7 +17,7 @@ describe('Feature: Publishing', () => {
 			const timelineMessage = aliceTimeline.view();
 
 			it('Then Alice sees: "I love the weather today."', () => {
-				expect(alice.getName()).to.equal(name);
+				expect(aliceTimeline.getUser().getName()).to.equal("Alice");
 				expect(timelineMessage).to.equal(message);
 			});
 		});
