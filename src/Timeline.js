@@ -1,5 +1,10 @@
-function _Timeline(){
+function _Timeline(user){
 	let newMessage = null;
+	const timelineUser = user;
+
+	function getUser() {
+		return timelineUser;
+	}
 
 	function publish(message){
 		newMessage = message;
@@ -9,7 +14,7 @@ function _Timeline(){
 		return newMessage
 	}
 
-	return { publish, view }
+	return { getUser, publish, view }
 }
 
 function Timeline(user){
