@@ -35,6 +35,12 @@ Feature: Following
          Bob - Damn! We lost! (2 minutes ago)     
          Alice - I love the weather today (5 minutes ago)    
 ```
+# Notes
+The Domain Logic is using [JS factory functions](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1) which uses JS Closure.  I Could have uses classes, but this is just my preference for katas; keep it simple.
+
+I have also demonstrated a couple different styles:
+- `publishing.spec.js` shows Gherkin in the tests (_without_ the Cucumber framework due to lack of time)
+- `timeline.spec.js` shows the behavior without Gherkin but still gets the behavior across to the reader
 
 # Getting Started
 - `yarn` - install dependencies
