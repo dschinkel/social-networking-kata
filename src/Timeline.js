@@ -1,15 +1,19 @@
 function _Timeline(){
-	function publish(){
+	let newMessage = null;
+
+	function publish(message){
+		newMessage = message;
 	}
 
 	function view(){
+		return newMessage
 	}
 
 	return { publish, view }
 }
 
-function Timeline(){
-	return _Timeline();
+function Timeline(user){
+	return _Timeline(user);
 }
 
 export default Timeline;

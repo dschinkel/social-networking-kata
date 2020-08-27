@@ -1,5 +1,6 @@
 function _User() {
 	function getName(){
+		return "Alice"
 	}
 
 	return { getName }
