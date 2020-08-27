@@ -3,15 +3,25 @@ import Timeline from '../../Timeline';
 
 describe('Feature: Timeline', () => {
 
-	it('Scenario: Alice views Bob\'s timeline', () => {
+	it('Scenario: Alice views Bob\'s timeline', function (done){
+		this.timeout(3000)
 		const bob = User("Bob");
 		const bobTimeline = Timeline(bob);
-		bobTimeline.publish("Darn! We lost!")
-		bobTimeline.publish("Good game though.")
+		let messages;
 
-		const messages = bobTimeline.view();
+		bobTimeline.publish("Good game though.");
 
-		expect(messages[0]).to.equal('Good game though. (1 minute ago)')
-		expect(messages[1]).to.equal('Darn! We lost! (2 minute ago)')
+		setTimeout(()=> {
+			messages = bobTimeline.view();
+			expect(messages[0].elapsedText).to.equal('Good game though. (1 minute ago)');
+		}, 1000);
+
+		bobTimeline.publish("Darn! We lost!");
+
+		setTimeout(()=> {
+			messages = bobTimeline.view();
+			expect(messages[1].elapsedText).to.equal('Darn! We lost! (2 minute ago)')
+			done();
+		}, 2000);
 	});
 });

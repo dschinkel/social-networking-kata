@@ -14,11 +14,11 @@ describe('Feature: Publishing', () => {
 		});
 
 		describe('When Alice views her timeline', () => {
-			const timelineMessage = aliceTimeline.view();
+			const messages = aliceTimeline.view();
 
 			it('Then Alice sees: "I love the weather today."', () => {
 				expect(aliceTimeline.getUser().getName()).to.equal("Alice");
-				expect(timelineMessage).to.equal(message);
+				expect(messages[0].originalText).to.equal(message);
 			});
 		});
 	});

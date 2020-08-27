@@ -1,5 +1,6 @@
+
 function _Timeline(user){
-	let newMessage = null;
+	const messages = [];
 	const timelineUser = user;
 
 	function getUser() {
@@ -7,11 +8,17 @@ function _Timeline(user){
 	}
 
 	function publish(message){
-		newMessage = message;
+		messages.push({originalText: message, elapsedText: '', postedTime: new Date() });
 	}
 
 	function view(){
-		return newMessage
+		const messagesWithElapsedtime = messages.map(message => {
+			let timeDifference = Math.round((new Date() - message.postedTime) / 1000);
+			message.elapsedText = `${message.originalText} (${timeDifference} minute ago)`
+			return message;
+		})
+
+		return messagesWithElapsedtime
 	}
 
 	return { getUser, publish, view }
